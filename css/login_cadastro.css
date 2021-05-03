@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+}
+
+.sec_login_cadastro {
+    background: url(../images/contato_fundo.jfif);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+}
+
+.conteiner_contato {
+    height: 89.5vh;
+    position: relative;
+    width: 100%;
+}
+
+.box_contato {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 320px;
+    background-color:rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.rodape {
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* border-top: 2px solid purple; */
+    width: 100%;
+    position: absolute;
+    top: 100vh;
+    transform: translate(0, -80px);
+    color: white;
+    text-align: center;
+    /* padding-top: 20px; */
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.login {
+    color: white;
+    font-weight: 700;
+}
+
+.logo {
+    width: 70px;
+    margin: 65px 0 20px 0;
+}
+
+h1 {
+    text-transform: uppercase; 
+}
+
+input {
+    border: 2px solid purple;
+    background-color: #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    margin: 20px 0 10px 0;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: purple 2px solid;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: pink;
+}
+
+span {
+    cursor: pointer;
+}
+
+.troca {
+    margin-top: 15px;
+}
+
+.cadastro {
+    color: white;
+    font-weight: 700;
+}
+
+.logo2 {
+    width: 70px;
+    margin: 65px 0 20px 0;
+}
+
