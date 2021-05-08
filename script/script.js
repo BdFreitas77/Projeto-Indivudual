@@ -26,6 +26,9 @@ function criar() {
         alert("Senhas devem possuir, no mínimo, 8 caracteres e no máximo 16.")
     } else if (senha_cadastro.value != confirme_senha.value) {
         alert("Senhas não conferem, tente novamente!")
+    } else {
+        inf_login.style.display = "block";
+        inf_cadastro.style.display = "none";
     }
 }
 
@@ -33,7 +36,7 @@ function entrar() {
     if (usuario.value == "" || senha_usuario.value == "") {
         alert("Preencha os campos corretamente.")
     } else if (usuario.value == "breno.freitas@bandtec.com.br" && senha_usuario.value == "breno123") {
-        window.location.href = "homepage.html";
+        window.location.href = "social.html";
     } else {
         alert("E-mail ou senha incorretos, tente novamente !")
     }
@@ -49,10 +52,44 @@ function mostrar_perfil() {
     chat.style.display = 'none';
 }
 
+
+
 function mostrar_amigos() {
     perfil.style.display = 'none';
     amigos.style.display = 'block';
-    chat.style.display = 'none';
+    // chat.style.display = 'none';
+    mostrar_pessoas_online();
+    // mostrar_usuarios();
 }
+
+
+var aleatorio = parseInt(Math.random() * 501);
+
+function mostrar_pessoas_online() {
+    if (aleatorio > 100) {
+        span_pessoas.style.color = "green";
+    } else {
+        span_pessoas.style.color = "red";
+    }
+    span_pessoas.innerHTML = `${aleatorio}`;
+}
+
+
+function motrar_usuarios() {
+    var aleatorio_dois = parseInt(Math.random() * 3 + 1)
+
+}
+
+// var 
+
+// function mandar_pedido() {
+
+// }
+
+
+
+
+
+
 
 
