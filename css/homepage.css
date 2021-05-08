@@ -27,6 +27,7 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid purple;
     position: fixed;
+    z-index: 1;
 }
 
 .header {
@@ -112,6 +113,12 @@ li {
     cursor: pointer;
 }
 
+
+
+/* SECTIOM MEIO */
+
+
+
 .sec_two {
     padding: 150px 0;
 }
@@ -139,7 +146,7 @@ li {
 
 
 .quem_sou {
-    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    border: 4px solid rgb(238, 130, 238, 0.7);
     width: 60%;
     height: 580px;
     padding: 20px;
@@ -156,11 +163,11 @@ li {
 .qmsou_text {
     text-align: justify;
     width: 100%;
-    
+
 }
 
 .meditacao {
-    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    border: 4px solid rgb(238, 130, 238, 0.7);
     /* display: flexbox; */
     width: 45%;
     height: 350px;
@@ -176,7 +183,7 @@ li {
 }
 
 .frases {
-    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    border: 4px solid rgb(238, 130, 238, 0.7);
     /* display: flexbox; */
     width: 45%;
     height: 350px;
@@ -190,9 +197,18 @@ li {
     padding-top: 20px;
 }
 
+
+/* SECTIOM FINAL */
+
+
+
 .sec_three {
     background: linear-gradient(violet, purple);
-    position: relative;
+    /* flex-direction: column; */
+    /* position: relative; */
+    /* flex-direction:  */
+    /* justify-content: center; */
+
     height: 100vh;
     /* background-repeat: no-repeat; */
     /* background-position: center; */
@@ -202,9 +218,18 @@ li {
 }
 
 .conteiner_contato {
-    /* height: 89.5vh; */
-    /* position: relative; */
+    height: 100vh;
+    position: relative;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* justify-content: flex-end; */
     width: 100%;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: flex-end; */
+    /* margin: 50px; */
 }
 
 .box_contato {
@@ -212,9 +237,13 @@ li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* display: flexbox; */
+    /* justify-content: center; */
+    /* align-self: center; */
+    /* margin: 0 auto; */
     height: 500px;
     width: 1200px;
-    background-color:rgba(225, 225, 225, 0.3);
+    background-color: rgba(225, 225, 225, 0.3);
     box-shadow: 4px 4px 4px pink;
 }
 
@@ -247,7 +276,8 @@ li {
     font-size: 23px;
 }
 
-#input_text_um, #input_text_dois {
+#input_text_um,
+#input_text_dois {
     border: 2px solid purple;
     background-color: #dddddd;
     border-radius: 10px;
@@ -292,10 +322,6 @@ button {
     cursor: pointer;
     font-weight: 700;
     background-color: pink;
-}
-
-u {
-    cursor: pointer;
 }
 
 

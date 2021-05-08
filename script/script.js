@@ -42,3 +42,17 @@ function entrar() {
 function saiba_mais() {
     window.location.href = "#sec_sobre";
 }
+
+function mostrar_perfil() {
+    perfil.style.display = 'block';
+    amigos.style.display = 'none';
+    chat.style.display = 'none';
+}
+
+function mostrar_amigos() {
+    perfil.style.display = 'none';
+    amigos.style.display = 'block';
+    chat.style.display = 'none';
+}
+
+

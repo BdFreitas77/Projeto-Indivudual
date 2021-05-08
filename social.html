@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pr-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/social.css">
+    <script src="script/script.js"></script>
+    <title>Área Social</title>
+</head>
+
+<body>
+    <div id="pag">
+        <div id="conteudo">
+            <br><br>
+            <h1>Seja bem vindo !</h1>
+            <br><br>
+            <div id="options">
+                <div onclick="mostrar_perfil()" class="item">
+                    perfil
+                </div>
+                <div onclick="mostrar_amigos()" class="item">
+                    amigos
+                </div>
+                <div onclick="mostrar_chat()" class="item">
+                    chat
+                </div>
+            </div>
+            <br><br>
+            <div id="box">
+                <div id="perfil" style="display: none;">
+                    Foto de perfil: <br>
+                    <img src="images/eu.jfif" alt=""> <br>
+                    <span id="alterar">Alterar.</span>
+                    <br><br>
+                    <div id="perfil_items">
+                        <div class="p_item">
+                            <input type="checkbox"> <span class="title">Quero aparecer para outras pessoas</span> <br><br>
+                            (Deixar de aparecer para outras pessoas impedem os outros de te mandarem convites de
+                            amizade, porém, você ainda consegue mandar para outros.)
+                        </div>
+                        <div class="p_item">
+                            <span id="mid_title">Descrição:</span> <br><br>
+                            (Texto que as outras pessoas verão ao encontrarem seu perfil, seja breve e bem criativo!)
+                            <br><br>
+                            <textarea name="" id="descricao" cols="30" rows="10" placeholder="Insira sua descrição aqui."></textarea>
+                        </div>
+                        <div class="p_item"><span id="mid_title">Status:</span> <br><br>
+                            <input type="checkbox"> Aparecer on-line.
+                            <br><br>
+                            <span style="float: right;"><input type="checkbox"> Aparecer ausente.</span>
+                            <br><br>
+                            <input type="checkbox"> Aparecer ocupado.
+                            <br><br>
+                            <span style="float: right;"><input type="checkbox"> Aparecer off-line.</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div id="amigos">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
