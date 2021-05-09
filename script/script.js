@@ -19,6 +19,8 @@ function eu_quero() {
 function mostrar_cadastro() {
     inf_login.style.display = "none";
     inf_cadastro.style.display = "block";
+    usuario.value = '';
+    senha_usuario.value = '';
 }
 
 function criar() {
@@ -30,6 +32,9 @@ function criar() {
         inf_login.style.display = "block";
         inf_cadastro.style.display = "none";
     }
+    email.value = '';
+    senha_cadastro.value = '';
+    confirme_senha.value = '';
 }
 
 function entrar() {
@@ -47,6 +52,7 @@ function saiba_mais() {
 }
 
 function mostrar_perfil() {
+    box.style.display = 'block'
     perfil.style.display = 'block';
     amigos.style.display = 'none';
     chat.style.display = 'none';
@@ -55,11 +61,12 @@ function mostrar_perfil() {
 
 
 function mostrar_amigos() {
+    box.style.display = 'block'
     perfil.style.display = 'none';
     amigos.style.display = 'block';
     // chat.style.display = 'none';
     mostrar_pessoas_online();
-    // mostrar_usuarios();
+    mostrar_usuarios();
 }
 
 
@@ -74,17 +81,77 @@ function mostrar_pessoas_online() {
     span_pessoas.innerHTML = `${aleatorio}`;
 }
 
+var aleatorio_dois = parseInt(Math.random() * 3 + 1)
+// var pessoa_atual = aleatorio_dois;
 
-function motrar_usuarios() {
-    var aleatorio_dois = parseInt(Math.random() * 3 + 1)
-
+function mostrar_usuarios() {
+    if (aleatorio_dois == 1) {
+        andreia.style.display = 'block';
+        alisson.style.display = 'none';
+        roberta.style.display = 'none';
+    } else if (aleatorio_dois == 2) {
+        andreia.style.display = 'none';
+        alisson.style.display = 'block';
+        roberta.style.display = 'none';
+    } else if (aleatorio_dois == 3) {
+        andreia.style.display = 'none';
+        alisson.style.display = 'none';
+        roberta.style.display = 'block';
+        
+    }
 }
 
-// var 
+function mandar_pedido() {
+    if (aleatorio_dois == 1) {
+        alert('Pedido de amizade enviado para Andréia !')
+    } else if (aleatorio_dois == 2) {
+        alert('Pedido de amizade enviado para Alisson!')
+    } else {
+        alert('Pedido de amizade enviado para Roberta!')
+    }
+}
 
-// function mandar_pedido() {
+function proximo() {
 
-// }
+    var gerar_novo = parseInt(Math.random() * 3 + 1);
+    if (gerar_novo == aleatorio_dois) {
+        while (gerar_novo == aleatorio_dois) {
+            gerar_novo = parseInt(Math.random() * 3 + 1)
+        }
+        // alert(gerar_novo)
+        if (gerar_novo == 1) {
+            andreia.style.display = 'block';
+            alisson.style.display = 'none';
+            roberta.style.display = 'none';
+            aleatorio_dois = 1;
+        } else if (gerar_novo == 2) {
+            andreia.style.display = 'none';
+            alisson.style.display = 'block';
+            roberta.style.display = 'none';
+            aleatorio_dois = 2;
+        } else if (gerar_novo == 3) {
+            andreia.style.display = 'none';
+            alisson.style.display = 'none';
+            roberta.style.display = 'block';
+            aleatorio_dois = 3;
+        }
+    } else if (gerar_novo == 1) {
+        andreia.style.display = 'block';
+        alisson.style.display = 'none';
+        roberta.style.display = 'none';
+        aleatorio_dois = 1;
+    } else if (gerar_novo == 2) {
+        andreia.style.display = 'none';
+        alisson.style.display = 'block';
+        roberta.style.display = 'none';
+        aleatorio_dois = 2;
+    } else if (gerar_novo == 3) {
+        andreia.style.display = 'none';
+        alisson.style.display = 'none';
+        roberta.style.display = 'block';
+        aleatorio_dois = 3;
+    }
+}
 
 
 
