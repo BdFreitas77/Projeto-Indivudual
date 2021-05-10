@@ -140,3 +140,85 @@ h1 {
     background-color: pink;
     cursor: pointer;
 }
+
+#chat {
+    text-align: center;
+    background-color: rgb(204, 203, 203);
+    height: 92%;
+    padding: 20px;
+}
+
+#campo_de_mensagem {
+    background-color: white;
+    height: 100%
+}
+
+#amigos_mensagem {
+    height: 100%;
+    float: left;
+    border: 2px solid black;
+    width: 30%;
+    /* text-align: justify; */
+}
+
+#mensagem {
+    float: right;
+    width: 69%;
+    border: 2px solid black;
+    height: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.amigo_mensagem {
+    height: 15%;
+    /* background-color: gray; */
+    border-bottom: 2px solid black;
+    margin: 10px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+#chat img {
+    height: 45px;
+    float: left;
+    /* border-radius: 50%; */
+}
+
+#nome {
+    font-weight: 700;
+    font-size: 45px;
+}
+
+#dm {
+    /* margin-top: 10px; */
+    height: 95%;
+    width: 95%;
+    background-color: #E0E0E0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#dm input {
+    width: 250px;
+    border: 1px solid gray;
+    padding: 30px;
+}
+
+#espaco_para_mensagem {
+    /* background-color: black; */
+    height: 70%;
+}
+
+#dm button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: pink;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}

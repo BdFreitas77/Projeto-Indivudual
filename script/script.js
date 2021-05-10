@@ -56,6 +56,7 @@ function mostrar_perfil() {
     perfil.style.display = 'block';
     amigos.style.display = 'none';
     chat.style.display = 'none';
+    dm.style.display = 'none';
 }
 
 
@@ -64,9 +65,18 @@ function mostrar_amigos() {
     box.style.display = 'block'
     perfil.style.display = 'none';
     amigos.style.display = 'block';
-    // chat.style.display = 'none';
+    chat.style.display = 'none';
+    dm.style.display = 'none';
     mostrar_pessoas_online();
     mostrar_usuarios();
+}
+
+function mostrar_chat() {
+    box.style.display = 'block'
+    perfil.style.display = 'none';
+    amigos.style.display = 'none';
+    chat.style.display = 'block';
+    // dm.style.display = 'none';
 }
 
 
@@ -153,8 +163,13 @@ function proximo() {
     }
 }
 
+function show_boxmessage() {
+    dm.style.display = 'block';
+}
 
-
+function enviar_apagar() {
+    mensagem_chat.value = '';
+}
 
 
 
