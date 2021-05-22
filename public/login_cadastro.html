@@ -75,7 +75,7 @@
                 } else {
     
                     console.log('Erro de login!');
-    
+                    alert('Email ou senha incorretos!');
                     resposta.text().then(texto => {
                         console.error(texto);
                         finalizar_aguardar(texto);

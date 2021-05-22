@@ -31,7 +31,7 @@
                             <a href="login_cadastro.html">LOGIN / CADASTRO</a>
                         </li>
                         <li>
-                            <a href="https://newaccount1621527364544.freshdesk.com/support/tickets/neww">SUPORTE</a>
+                            <a href="https://newaccount1621527364544.freshdesk.com/support/tickets/new">SUPORTE</a>
                         </li>
                     </ul>
                 </nav>
@@ -130,34 +130,38 @@
                         <u class="msg">Entre em contato!</u>
                     </div>
                     <div class="box_informations">
-                        <div class="selecione">
-                            Selecione o que você gostaria de receber via e-mail:
-                            <br>
-                            <br>
-                            <br>
-                            <input type="checkbox" id="check_um" value="links_youtube"> Link de vídeos do youtube.
-                            <br>
-                            <br>
-                            <br>
-                            <input type="checkbox" id="check_dois" value="pdfs_livros"> Pdfs de livros.
-                            <br>
-                            <br>
-                            <br>
-                            <input type="checkbox" id="check_tres" value="pag_insta"> Páginas do instagram.
-                        </div>
-                        <div class="insira">
-                            Insira seu e-mail:
-                            <br>
-                            <br>
-                            <br>
-                            <input id="input_text_um" type="text">
-                            <br><br><br>
-                            Confirme seu e-mail:
-                            <br><br><br>
-                            <input id="input_text_dois" type="text">
-                        </div>
-                        <div class="separar"></div>
-                        <button onclick="eu_quero()">EU QUERO!</button>
+                        <form id="form_curso" method="post" onsubmit="return eu_quero()">
+                            <div class="selecione">
+                                Selecione o que você gostaria de receber via e-mail:
+                                <br>
+                                <br>
+                                <br>
+                                <input type="checkbox" id="check_um" value="links_youtube" name="ytb"> Link de vídeos do
+                                youtube.
+                                <br>
+                                <br>
+                                <br>
+                                <input type="checkbox" id="check_dois" value="pdfs_livros" name="pdf"> Pdfs de livros.
+                                <br>
+                                <br>
+                                <br>
+                                <input type="checkbox" id="check_tres" value="pag_insta" name="insta"> Páginas do
+                                instagram.
+                            </div>
+                            <div class="insira">
+                                Insira seu e-mail:
+                                <br>
+                                <br>
+                                <br>
+                                <input id="input_text_um" type="text" name="email_curso">
+                                <br><br><br>
+                                Confirme seu e-mail:
+                                <br><br><br>
+                                <input id="input_text_dois" type="text">
+                            </div>
+                            <div class="separar"></div>
+                            <button id="btn_entrar" onclick="eu_quero()">EU QUERO!</button>
+                        </form>
                     </div>
                 </div>
 
@@ -188,3 +192,75 @@
 </body>
 
 </html>
+<script>
+    function eu_quero() {
+        if (input_text_um.value.indexOf("@") > input_text_um.value.indexOf(".com") || input_text_um.value == "" ||
+            input_text_um.value.indexOf("@") == "-1") {
+            alert("Insira um e-mail válido, por favor !")
+        } else if (input_text_um.value != input_text_dois.value) {
+            alert("e-mails NÃO coincidem ! Tente novamente !")
+        } else if (check_um.checked || check_dois.checked || check_tres.checked) {
+
+            if (check_um.checked) {
+                check_um.value = 'sim';
+            } else {
+                check_um.value = 'nao'
+            }
+            if (check_dois.checked) {
+                check_dois.value = 'sim';
+            } else {
+                check_dois.value = 'nao'
+            }
+            if (check_tres.checked) {
+                check_tres.value = 'sim';
+            } else {
+                check_tres.value = 'nao'
+            }
+
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_curso));
+            fetch("/leituras/enviar_curso", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+
+                    contato.style.display = "none";
+                    contato_resultado.style.display = "block";
+
+                } else {
+
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        alert(`${resposta}:`)
+                    });
+                    finalizar_aguardar();
+                }
+            });
+
+            return false;
+        } else {
+            alert("Selecione pelo menos uma das caixinhas !")
+        }
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        // div_erro.style.display = 'none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        // div_erro.style.display = 'block';
+        // alert(`${resp}`)
+    }
+
+
+    // function cadastrar() {
+    //     if (senha_cadastro.value.length < 8 || senha_cadastro.value.length > 16) {
+    //         alert("Senhas devem possuir, no mínimo, 8 caracteres e no máximo 16.")
+    //     } else if (senha_cadastro.value != confirme_senha.value) {
+    //         alert("Senhas não conferem, tente novamente!")
+    //     } else {
+</script>

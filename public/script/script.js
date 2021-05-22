@@ -2,20 +2,6 @@ function varificar_email() {
     input_text_um.value == input_text_dois.value ? mostrar_login() : alert("e-mails NÃO coincidem ! Tente novamente !")
 }
 
-
-function eu_quero() {
-    if (input_text_um.value.indexOf("@") > input_text_um.value.indexOf(".com") || input_text_um.value == "" || input_text_um.value.indexOf("@") == "-1") {
-        alert("Insira um e-mail válido, por favor !")
-    } else if (input_text_um.value != input_text_dois.value) {
-        alert("e-mails NÃO coincidem ! Tente novamente !")
-    } else if (check_um.checked || check_dois.checked || check_tres.checked) {
-        contato.style.display = "none";
-        contato_resultado.style.display = "block";
-    } else {
-        alert("Selecione pelo menos uma das caixinhas !")
-    }
-}
-
 function mostrar_cadastro() {
     inf_login.style.display = "none";
     inf_cadastro.style.display = "block";
