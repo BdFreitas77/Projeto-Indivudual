@@ -23,30 +23,6 @@ function mostrar_cadastro() {
     senha_usuario.value = '';
 }
 
-function criar() {
-    if (senha_cadastro.value.length < 8 || senha_cadastro.value.length > 16) {
-        alert("Senhas devem possuir, no mínimo, 8 caracteres e no máximo 16.")
-    } else if (senha_cadastro.value != confirme_senha.value) {
-        alert("Senhas não conferem, tente novamente!")
-    } else {
-        inf_login.style.display = "block";
-        inf_cadastro.style.display = "none";
-    }
-    email.value = '';
-    senha_cadastro.value = '';
-    confirme_senha.value = '';
-}
-
-function entrar() {
-    if (usuario.value == "" || senha_usuario.value == "") {
-        alert("Preencha os campos corretamente.")
-    } else if (usuario.value == "breno.freitas@bandtec.com.br" && senha_usuario.value == "breno123") {
-        window.location.href = "social.html";
-    } else {
-        alert("E-mail ou senha incorretos, tente novamente !")
-    }
-}
-
 function saiba_mais() {
     window.location.href = "#sec_sobre";
 }

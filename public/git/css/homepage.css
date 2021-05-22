@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* html {
+    scroll-behavior: [ auto  smooth ]
+} */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+}
+
+.sec_one {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url(../images/fundo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    /* background-attachment: fixed; */
+}
+
+.conteiner_header {
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid purple;
+    position: fixed;
+}
+
+.header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 7px;
+}
+
+.logo {
+    width: 70px;
+    float: left;
+    /* position: relative; */
+}
+
+
+nav {
+    float: right;
+    /* position: relative; */
+}
+
+a {
+    text-decoration: none;
+    color: rgb(238, 130, 238, 0.7);
+
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    font-weight: 700;
+    padding: 24.5px 10px 0 10px;
+    color: rgb(238, 130, 238, 0.7);
+    letter-spacing: 2.5px;
+}
+
+
+
+.conteiner_apresentação {
+    width: 100%;
+    font-style: normal;
+    text-align: center;
+    position: relative;
+    height: 93vh;
+}
+
+.title {
+    /* padding-top: 150px; */
+    margin: 0 auto;
+    max-width: 1200px;
+    /* background-color: rgba(225, 225, 225, 0.3);
+    backdrop-filter: blur(7px); */
+    font-weight: 700;
+    color: white;
+    font-size: 70px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 100%;
+}
+
+#lower_text {
+    font-size: 20px;
+    letter-spacing: normal;
+    letter-spacing: 2px;
+}
+
+.title button {
+    border: 2px solid white;
+    padding: 20px 40px;
+    font-weight: 700;
+    background: rgb(238, 130, 238, 0.7);
+    text-transform: uppercase;
+    color: white;
+    box-shadow: 2px 2px 2px rgb(220, 8, 220);
+    cursor: pointer;
+}
+
+.sec_two {
+    padding: 150px 0;
+}
+
+.conteiner_sobre {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 1205px;
+}
+
+.conteiner_sobre h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.questions {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.conteiner_sobre h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+.quem_sou {
+    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    width: 60%;
+    height: 580px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+#foto img {
+    width: 48%;
+    margin: 20px;
+    box-shadow: 7px 7px 7px purple;
+    /* float: left; */
+}
+
+.qmsou_text {
+    text-align: justify;
+    width: 100%;
+    
+}
+
+.meditacao {
+    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    /* display: flexbox; */
+    width: 45%;
+    height: 350px;
+    float: left;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+
+.meditacao_text {
+    text-align: justify;
+    padding-top: 20px;
+}
+
+.frases {
+    border: 4px solid rgb(238, 130, 238, 0.7) ;
+    /* display: flexbox; */
+    width: 45%;
+    height: 350px;
+    float: right;
+    padding: 20px;
+    margin: 50px 0;
+}
+
+.frases_text {
+    text-align: justify;
+    padding-top: 20px;
+}
+
+.sec_three {
+    background: linear-gradient(violet, purple);
+    position: relative;
+    height: 100vh;
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-size: cover; */
+    /* width: 100%; */
+    /* backdrop-filter: brightness(2px); */
+}
+
+.conteiner_contato {
+    /* height: 89.5vh; */
+    /* position: relative; */
+    width: 100%;
+}
+
+.box_contato {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 1200px;
+    background-color:rgba(225, 225, 225, 0.3);
+    box-shadow: 4px 4px 4px pink;
+}
+
+.text {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    padding: 30px;
+    text-align: center;
+    color: #dddddd;
+    /* color: #b3b3b3; */
+}
+
+.msg {
+    font-size: 50px;
+}
+
+.rodape {
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* border-top: 2px solid purple; */
+    width: 100%;
+    position: absolute;
+    top: 100vh;
+    transform: translate(0, -80px);
+    color: #dddddd;
+    text-align: center;
+    /* padding-top: 20px; */
+    font-weight: 700;
+    font-size: 23px;
+}
+
+#input_text_um, #input_text_dois {
+    border: 2px solid purple;
+    background-color: #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 304px;
+    /* float: right; */
+}
+
+
+.box_informations {
+    max-width: 731px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.selecione {
+    float: left;
+    text-align: justify;
+    width: 45%;
+    font-weight: 700;
+}
+
+.insira {
+    float: right;
+    width: 45%;
+    text-align: justify;
+    font-weight: 700;
+}
+
+.separar {
+    height: 270px;
+    background-color: white;
+    width: 2px;
+    margin: 0 auto;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: purple 2px solid;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: pink;
+}
+
+u {
+    cursor: pointer;
+}
+
+
+.text_result {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    padding: 30px;
+    text-align: center;
+    color: #dddddd;
+    text-transform: uppercase;
+}
+
+.list {
+    text-align: center;
+    font-weight: 700;
+    color: #dddddd;
+    font-size: 25px;
+}

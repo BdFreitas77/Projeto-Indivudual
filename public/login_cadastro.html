@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login_cadastro.css">
+    <script src="script/script.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="sec_login_cadastro">
+        <div class="conteiner_contato">
+            <div class="box_contato">
+                <form id="form_login">
+                    <div id="inf_login" class="login" style="display: block;" method="post" onsubmit="return entrar()">
+                        <a href="index.html"><img class="logo" src="images/logo.png" alt=""></a>
+                        <h1 id="title">Login</h1>
+                        <input id="usuario" type="text" placeholder="Insira seu e-mail" name="user">
+                        <input id="senha_usuario" type="password" placeholder="Insira sua senha" name="senha">
+                        <br>
+                        <button id="btn_entrar" type="submit" onclick="entrar()">ENTRAR</button>
+                        <div class="troca">
+                            Não possui uma conta? <br>
+                            <span><u id="msg" onclick="mostrar_cadastro()">Clique aqui</u></span>
+                        </div>
+                    </div>
+                </form>
+                <div id="div_erro"></div>
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                    <div id="inf_cadastro" class="cadastro" style="display: none;">
+                        <a href="index.html"><img class="logo2" src="images/logo.png" alt=""></a>
+                        <h1 id="title">Cadastro</h1>
+                        <input id="email" type="text" placeholder="Insira seu e-mail" name="email">
+                        <input id="senha_cadastro" type="password" placeholder="Crie uma senha" name="password">
+                        <input id="confirme_senha" type="password" placeholder="Confirme sua senha">
+                        <br>
+                        <button id="btn_entrar" type="button" onclick="cadastrar()">CRIAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="rodape">
+            <br>
+            Copyright © 2021 | Desenvolvido por Breno de Freitas.
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    function entrar() {
+        if (usuario.value == "" || senha_usuario.value == "") {
+            alert("Preencha os campos corretamente.")
+        } else {
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_login));
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                body: formulario
+            }).then(resposta => {
+    
+                if (resposta.ok) {
+    
+                    resposta.json().then(json => {
+    
+                        sessionStorage.login_usuario_meuapp = json.login;
+                        sessionStorage.nome_usuario_meuapp = json.nome;
+    
+                        window.location.href = 'social.html';
+                    });
+    
+                } else {
+    
+                    console.log('Erro de login!');
+    
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizar_aguardar(texto);
+                    });
+                }
+            });
+    
+            return false;
+        }
+    }
+
+    var resp = '';
+
+    function cadastrar() {
+        if (senha_cadastro.value.length < 8 || senha_cadastro.value.length > 16) {
+            alert("Senhas devem possuir, no mínimo, 8 caracteres e no máximo 16.")
+        } else if (senha_cadastro.value != confirme_senha.value) {
+            alert("Senhas não conferem, tente novamente!")
+        } else {
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_cadastro));
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+
+                    window.location.href = 'login_cadastro.html';
+
+                } else {
+
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        alert(            `${resposta}:
+Email já cadastrado! Por gentileza, utilize outro.`)
+                    });
+                    finalizar_aguardar();
+                }
+            });
+
+            return false;
+        }
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        div_erro.style.display = 'none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        // div_erro.style.display = 'block';
+        // alert(`${resp}`)
+    }
+</script>
