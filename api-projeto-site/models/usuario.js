@@ -22,6 +22,11 @@ module.exports = (sequelize, DataTypes) => {
 			field: 'SENHA',
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		iniciante: {
+			field: 'INICIANTE',
+			type: DataTypes.STRING,
+			allowNull: true
 		}
 	}, 
 	{

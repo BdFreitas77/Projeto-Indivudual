@@ -7,10 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/homepage.css">
     <script src="script/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js">
+    </script>
     <title>Página Inicial</title>
 </head>
 
-<body>
+<body onload=obterDadosGraficoPrimeiraVez()>
 
     <section id="sec_home" class="sec_one">
         <div class="conteiner_header">
@@ -118,6 +123,13 @@
                     </div>
                 </div>
             </div>
+            <div style="display: inline-block;">
+                <h1 style="text-transform: uppercase; text-decoration: underline; margin: 20px 0 55px 0;">Sobre os
+                    usuários desse site:</h1>
+                    <div id="grafico">
+                        <canvas id="myChart" style="height: 600px;"></canvas>
+                    </div>
+            </div>
         </div>
     </section>
 
@@ -193,6 +205,11 @@
 
 </html>
 <script>
+    var contador = 0;
+    while (contador >= 5) {
+        obterDadosGraficoPrimeiraVez()
+        contador++
+    }
     function eu_quero() {
         if (input_text_um.value.indexOf("@") > input_text_um.value.indexOf(".com") || input_text_um.value == "" ||
             input_text_um.value.indexOf("@") == "-1") {
@@ -219,7 +236,7 @@
 
             aguardar();
             var formulario = new URLSearchParams(new FormData(form_curso));
-            fetch("/leituras/enviar_curso", {
+            fetch("/index/enviar_curso", {
                 method: "POST",
                 body: formulario
             }).then(function (response) {
@@ -263,4 +280,129 @@
     //     } else if (senha_cadastro.value != confirme_senha.value) {
     //         alert("Senhas não conferem, tente novamente!")
     //     } else {
+
+    // var ctx = document.getElementById('myChart').getContext('2d');
+    // var myChart = new Chart(ctx, {
+    //     type: 'pie',
+    //     data: {
+    //         labels: [
+    //             'Meditadores Iniciantes',
+    //             'Meditadores Experientes'
+    //         ],
+    //         datasets: [{
+    //             label: 'My First Dataset',
+    //             data: [1, 5],
+    //             backgroundColor: [
+    //                 'Purple',
+    //                 'Pink'
+    //             ],
+    //             hoverOffset: 4
+    //         }]
+    //     },
+    //     options: {
+    //             plugins: {
+    //                 datalabels: {
+    //                     formatter: function (value, context) {
+    //                         return context.chart.data.labels[
+    //                             context.dataIndex
+    //                         ];
+    //                     },
+    //                 },
+    //             },
+    //         },
+    // });
+ 
+    
+
+    function gerar_grafico() {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Meditadores Iniciantes', 'Meditadores Experientes'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [iniciantes, experientes],
+                        backgroundColor: [
+                            'pink',
+                            'purple'
+                        ],
+                        borderColor: [
+                            'white'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+            });
+        }
+
+    // var resposta = '';
+
+    var iniciantes = 0;
+    var experientes = 0;
+
+
+    function obterDadosGraficoPrimeiraVez() {
+        console.log("executei obterDadosGraficoPrimeiraVez")
+        // alterarCoresBotoes(idcaminhao);
+
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/leituras/ultimas/`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(resposta);
+                        // resposta.reverse();
+                        // var iniciante_true = '';
+                        // iniciante_true = iniciante;
+                        // grafico = [];
+                        // grafico.push(resposta.iniciantes)
+                        // console.log(resposta.iniciantes);
+                        iniciantes = Number(resposta.length);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+            fetch(`/leituras/total/`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        // alert(resposta);
+                        // resposta.reverse();
+                        // var iniciante_true = '';
+                        // iniciante_true = iniciante;
+                        // grafico = [];
+                        // grafico.push(resposta.iniciantes)
+                        // console.log(resposta.iniciantes);
+                        experientes = Number(resposta.length) - Number(iniciantes);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+            
+
+
+            // gerar_grafico()
+        }
+        
+        setTimeout(() => obterDadosGraficoPrimeiraVez(), 1000)
+        setTimeout(() => gerar_grafico(), 1200)
+
 </script>

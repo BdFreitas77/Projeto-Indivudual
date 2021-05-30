@@ -126,17 +126,23 @@ li {
 .conteiner_sobre {
     max-width: 1200px;
     margin: 0 auto;
-    height: 1205px;
+    height: 1960px;
+}
+
+input {
+    outline: none;
 }
 
 .conteiner_sobre h1 {
     text-align: center;
     text-transform: uppercase;
+    text-decoration: underline;
 }
 
 .questions {
     text-align: center;
     margin-top: 100px;
+    height: 1075px;
 }
 
 .conteiner_sobre h3 {

@@ -2,31 +2,66 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Leitura = require('../models').Leitura;
-var Curso = require('../models').Curso;
 var env = process.env.NODE_ENV || 'development';
 
 /* Recuperar as últimas N leituras */
-router.get('/ultimas/:idcaminhao', function(req, res, next) {
+router.get('/ultimas/', function(req, res, next) {
 	
 	// quantas são as últimas leituras que quer? 7 está bom?
-	const limite_linhas = 7;
+	// const limite_linhas = 7;
 
-	var idcaminhao = req.params.idcaminhao;
+	// var idcaminhao = req.params.idcaminhao;
 
-	console.log(`Recuperando as ultimas ${limite_linhas} leituras`);
+	console.log(`Recuperando as ultimas leituras`);
 	
 	let instrucaoSql = "";
 
 	if (env == 'dev') {
 		// abaixo, escreva o select de dados para o Workbench
-		instrucaoSql = `select 
+		instrucaoSql = `select * from CADASTROS where INICIANTE = 'sim'`;
+		// instrucaoSql = `select INICIANTE from CADASTROS`;
+	} else if (env == 'production') {
+		// abaixo, escreva o select de dados para o SQL Server
+		instrucaoSql = `select top ${limite_linhas} 
 		temperatura, 
 		umidade, 
 		momento,
-		DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
+		FORMAT(momento,'HH:mm:ss') as momento_grafico
 		from leitura
 		where fkcaminhao = ${idcaminhao}
-		order by id desc limit ${limite_linhas}`;
+		order by id desc`;
+	} else {
+		console.log("\n\n\n\nVERIFIQUE O VALOR DE LINHA 1 EM APP.JS!\n\n\n\n")
+	}
+	
+	sequelize.query(instrucaoSql, {
+		model: Leitura,
+		mapToModel: true 
+	})
+	.then(resultado => {
+		console.log(`Encontrados: ${resultado.length}`);
+		res.json(resultado);
+	}).catch(erro => {
+		console.error(erro);
+		res.status(500).send(erro.message);
+	});
+});
+
+router.get('/total/', function(req, res, next) {
+	
+	// quantas são as últimas leituras que quer? 7 está bom?
+	// const limite_linhas = 7;
+
+	// var idcaminhao = req.params.idcaminhao;
+
+	console.log(`Recuperando as ultimas leituras`);
+	
+	let instrucaoSql = "";
+
+	if (env == 'dev') {
+		// abaixo, escreva o select de dados para o Workbench
+		instrucaoSql = `select * from CADASTROS`;
+		// instrucaoSql = `select INICIANTE from CADASTROS`;
 	} else if (env == 'production') {
 		// abaixo, escreva o select de dados para o SQL Server
 		instrucaoSql = `select top ${limite_linhas} 
@@ -55,11 +90,11 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 });
 
 
-router.get('/tempo-real/:idcaminhao', function(req, res, next) {
+router.get('/tempo-real/', function(req, res, next) {
 	console.log('Recuperando caminhões');
 	
 	//var idcaminhao = req.body.idcaminhao; // depois de .body, use o nome (name) do campo em seu formulário de login
-	var idcaminhao = req.params.idcaminhao;
+	// var idcaminhao = req.params.idcaminhao;
 	
 	let instrucaoSql = "";
 	
@@ -109,21 +144,6 @@ router.get('/estatisticas', function (req, res, next) {
   
 });
 
-router.post('/enviar_curso', function (req, res, next) {
-    console.log('Criando um usuário');
 
-    Curso.create({
-		email_curso: req.body.email_curso,
-        ytb: req.body.ytb,
-        pdf: req.body.pdf,
-        insta: req.body.insta
-    }).then(resultado => {
-        console.log(`Registro criado: ${resultado}`)
-        res.send(resultado);
-    }).catch(erro => {
-        console.error(erro);
-        res.status(500).send(erro.message);
-    });
-});
 
 module.exports = router;

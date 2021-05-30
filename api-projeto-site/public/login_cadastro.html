@@ -37,6 +37,8 @@
                         <input id="senha_cadastro" type="password" placeholder="Crie uma senha" name="password">
                         <input id="confirme_senha" type="password" placeholder="Confirme sua senha">
                         <br>
+                        <input type="checkbox" style="width: auto;" id="ipt_iniciante" name="iniciante"> Sou meditador iniciante.
+                        <br>
                         <button id="btn_entrar" type="button" onclick="cadastrar()">CRIAR</button>
                     </div>
                 </form>
@@ -90,6 +92,11 @@
     var resp = '';
 
     function cadastrar() {
+        if (ipt_iniciante.checked) {
+            ipt_iniciante.value = 'sim';
+        } else {
+            ipt_iniciante.value = 'nao';
+        } 
         if (senha_cadastro.value.length < 8 || senha_cadastro.value.length > 16) {
             alert("Senhas devem possuir, no mínimo, 8 caracteres e no máximo 16.")
         } else if (senha_cadastro.value != confirme_senha.value) {
