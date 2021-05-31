@@ -142,7 +142,7 @@
                         <u class="msg">Entre em contato!</u>
                     </div>
                     <div class="box_informations">
-                        <form id="form_curso" method="post" onsubmit="return eu_quero()">
+                        <form id="form_curso" method="post">
                             <div class="selecione">
                                 Selecione o que você gostaria de receber via e-mail:
                                 <br>
@@ -236,7 +236,7 @@
 
             aguardar();
             var formulario = new URLSearchParams(new FormData(form_curso));
-            fetch("/index/enviar_curso", {
+            fetch("/curso/enviar_curso", {
                 method: "POST",
                 body: formulario
             }).then(function (response) {
